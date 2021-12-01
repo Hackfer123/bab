@@ -1,5 +1,5 @@
-// Adafruit_NeoMatrix example for single NeoPixel Shield.
-// Scrolls 'Howdy' across the matrix in a portrait (vertical) orientation.
+// Пример Adafruit_NeoMatrix для одиночного NeoPixel Shield.
+// Прокручивает «Привет» по матрице в портретной (вертикальной) ориентации.
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
@@ -9,33 +9,33 @@
 #endif
 
 #define PIN A0
+// ОБЪЯВЛЕНИЕ МАТРИЦЫ:
+// Параметр 1 = ширина матрицы NeoPixel
+// Параметр 2 = высота матрицы
+// Параметр 3 = номер контакта (действительны большинство)
+// Параметр 4 = флаги компоновки матрицы, при необходимости сложите вместе:
+//    NEO_MATRIX_TOP, NEO_MATRIX_BOTTOM, NEO_MATRIX_LEFT, NEO_MATRIX_RIGHT:
+//      Положение ПЕРВОГО светодиода в матрице; выберите два, например
+//      NEO_MATRIX_TOP + NEO_MATRIX_LEFT для верхнего левого угла.
+//    NEO_MATRIX_ROWS, NEO_MATRIX_COLUMNS: светодиоды расположены горизонтально
+//      строками или вертикальными столбцами соответственно; выберите один или другой.
+//    NEO_MATRIX_PROGRESSIVE, NEO_MATRIX_ZIGZAG: все строки / столбцы продолжаются
+//      в том же порядке или чередуя строки в обратном направлении; Выбери один.
+//    См. Пример ниже для этих значений в действии.
+// Параметр 5 = флаги типа пикселя, при необходимости сложите вместе:
+//    NEO_KHZ800 800 кГц битовый поток (большинство продуктов NeoPixel со светодиодами WS2812)
+//    NEO_KHZ400 400 кГц (классические пиксели FLORA 'v1' (не v2), драйверы WS2811)
+//    NEO_GRB Пиксели привязаны к битовому потоку GRB (большинство продуктов NeoPixel)
+//    NEO_GRBW Пиксели привязаны к битовому потоку GRBW (продукты RGB + W NeoPixel)
+//    Пиксели NEO_RGB связаны для битового потока RGB (пиксели FLORA v1, а не v2)
 
-// MATRIX DECLARATION:
-// Parameter 1 = width of NeoPixel matrix
-// Parameter 2 = height of matrix
-// Parameter 3 = pin number (most are valid)
-// Parameter 4 = matrix layout flags, add together as needed:
-//   NEO_MATRIX_TOP, NEO_MATRIX_BOTTOM, NEO_MATRIX_LEFT, NEO_MATRIX_RIGHT:
-//     Position of the FIRST LED in the matrix; pick two, e.g.
-//     NEO_MATRIX_TOP + NEO_MATRIX_LEFT for the top-left corner.
-//   NEO_MATRIX_ROWS, NEO_MATRIX_COLUMNS: LEDs are arranged in horizontal
-//     rows or in vertical columns, respectively; pick one or the other.
-//   NEO_MATRIX_PROGRESSIVE, NEO_MATRIX_ZIGZAG: all rows/columns proceed
-//     in the same order, or alternate lines reverse direction; pick one.
-//   See example below for these values in action.
-// Parameter 5 = pixel type flags, add together as needed:
-//   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)
-//   NEO_KHZ400  400 KHz (classic 'v1' (not v2) FLORA pixels, WS2811 drivers)
-//   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
-//   NEO_GRBW    Pixels are wired for GRBW bitstream (RGB+W NeoPixel products)
-//   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 
+// Пример для NeoPixel Shield. В этом приложении мы хотели бы использовать его
+// как матрица высотой 5x8, с USB-портом, расположенным в верхней части
+// Ардуино. В таком положении первый пиксель находится вверху справа, а
+// строки расположены в столбцы в прогрессивном порядке. Щит использует
+// 800 кГц (v2) пикселей, которые ожидают данные цвета GRB.
 
-// Example for NeoPixel Shield.  In this application we'd like to use it
-// as a 5x8 tall matrix, with the USB port positioned at the top of the
-// Arduino.  When held that way, the first pixel is at the top right, and
-// lines are arranged in columns, progressive order.  The shield uses
-// 800 KHz (v2) pixels that expect GRB color data.
 Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(32, 8, PIN,
   NEO_MATRIX_TOP     + NEO_MATRIX_LEFT +
   NEO_MATRIX_COLUMNS + NEO_MATRIX_ZIGZAG,
